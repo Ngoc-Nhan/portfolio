@@ -16,9 +16,9 @@ function Home() {
         <div className="min-h-screen bg-base-100 transition-colors duration-500">
             {/* Navbar */}
             <nav className="flex fixed top-0 left-0 w-full h-16 bg-base-100 shadow-md items-center px-4 justify-between z-50">
-                <a href="#home" className="font-bold text-xl text-primary">My Portfolio</a>
+                <a href="#home" className="font-bold text-4xl text-primary">My Portfolio</a>
 
-                <div className="flex items-center space-x-6">
+                <div className="flex items-center text-3xl space-x-6">
                     <a href="#home" className="hover:text-primary">Home</a>
                     <a href="#about" className="hover:text-primary">About</a>
                     <a href="#projects" className="hover:text-primary">Projects</a>
