@@ -1,14 +1,14 @@
+// tailwind.config.js
+import daisyui from "daisyui";
 
-// /** @type {import('tailwindcss').Config} */
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {},
   },
-  plugins: [require("daisyui")],
+  plugins: [daisyui],
   daisyui: {
-    themes: ["light", "dark"], // ✅ chỉ cần 2 theme này
+    themes: ["light", "dark"], // ✅ như comment: chỉ cần 2 theme
   },
 };
-
-
