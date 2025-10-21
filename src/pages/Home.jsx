@@ -16,10 +16,8 @@ function Home() {
 
     return (
         <div className="min-h-screen bg-base-100 transition-colors duration-500">
-
             {/* Navbar */}
             <nav className="fixed top-0 left-0 w-full h-24 bg-base-100 shadow-md flex items-center justify-between px-6 z-50">
-                {/* Logo */}
                 <a href="#home" className="font-bold text-3xl sm:text-4xl text-primary">
                     My Portfolio
                 </a>
@@ -41,7 +39,6 @@ function Home() {
                         </Link>
                     ))}
 
-                    {/* Nút chuyển theme */}
                     <button
                         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
                         className="text-2xl hover:text-primary transition-transform duration-300 transform hover:rotate-180"
@@ -50,7 +47,7 @@ function Home() {
                     </button>
                 </div>
 
-                {/* Nút menu mobile */}
+                {/* Menu mobile */}
                 <div className="md:hidden flex items-center space-x-4">
                     <button
                         onClick={() => setMenuOpen(!menuOpen)}
@@ -60,7 +57,7 @@ function Home() {
                     </button>
                 </div>
 
-                {/* Menu mobile dạng overlay toàn màn hình */}
+                {/* Overlay menu */}
                 {menuOpen && (
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -84,7 +81,6 @@ function Home() {
                             </Link>
                         ))}
 
-                        {/* Nút theme trong menu mobile */}
                         <button
                             onClick={() => {
                                 setTheme(theme === "light" ? "dark" : "light");
@@ -98,78 +94,81 @@ function Home() {
                 )}
             </nav>
 
-
-            {/* Intro Section */}
-            <motion.div
-                id="home"
-                className="pt-36 pb-10 px-6 flex flex-col-reverse md:flex-row items-center justify-center gap-10 md:gap-20 text-center md:text-left"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-            >
-                {/* Text */}
-                <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1 }}
-                    className="max-w-md"
+            {/* Nội dung chính dạng “1 section = 1 màn hình” */}
+            <main className="snap-y snap-mandatory overflow-y-scroll h-screen scroll-smooth">
+                {/* Home */}
+                <motion.section
+                    id="home"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                    className="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center gap-10 md:gap-20 px-6 pt-24 md:pt-0 text-center md:text-left snap-start"
                 >
-                    <h2 className="text-xl sm:text-2xl font-base">Hello everyone, I am</h2>
-                    <h2 className="text-2xl sm:text-3xl font-semibold">
-                        Vo Thi Ngoc Nhan
-                    </h2>
-                    <p className="text-lg sm:text-xl mt-2">3rd year student</p>
-                    <p className="text-lg sm:text-xl">
-                        Ho Chi Minh City University of Transport
-                    </p>
-                </motion.div>
+                    {/* Text */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1 }}
+                        className="max-w-md"
+                    >
+                        <h2 className="text-xl sm:text-2xl font-base">Hello everyone, I am</h2>
+                        <h2 className="text-2xl sm:text-3xl font-semibold">
+                            Vo Thi Ngoc Nhan
+                        </h2>
+                        <p className="text-lg sm:text-xl mt-2">3rd year student</p>
+                        <p className="text-lg sm:text-xl">
+                            Ho Chi Minh City University of Transport
+                        </p>
+                    </motion.div>
 
-                {/* Ảnh */}
-                <motion.div
-                    className="flex items-center justify-center"
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1 }}
-                >
-                    <img
-                        src={anh}
-                        alt="Ảnh cá nhân"
-                        className="rounded-2xl shadow-lg w-48 sm:w-60 md:w-72 object-cover"
-                    />
-                </motion.div>
-            </motion.div>
+                    {/* Ảnh */}
+                    <motion.div
+                        className="flex items-center justify-center"
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1 }}
+                    >
+                        <img
+                            src={anh}
+                            alt="Ảnh cá nhân"
+                            className="rounded-2xl shadow-lg w-48 sm:w-60 md:w-72 object-cover"
+                        />
+                    </motion.div>
+                </motion.section>
 
-            {/* Main Sections */}
-            <main>
+                {/* About */}
                 <motion.section
                     id="about"
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="px-4 sm:px-8 md:px-12"
+                    className="min-h-screen flex items-center justify-center px-4 sm:px-8 md:px-12 snap-start"
                 >
                     <About />
                 </motion.section>
 
+                {/* Projects */}
                 <motion.section
                     id="projects"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="px-4 sm:px-8 md:px-12"
+                    className="min-h-screen flex items-center justify-center px-4 sm:px-8 md:px-12 snap-start"
                 >
                     <Project />
                 </motion.section>
 
+                {/* Contact */}
                 <motion.section
                     id="contact"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="px-4 sm:px-8 md:px-12"
+                    className="min-h-screen flex items-center justify-center px-4 sm:px-8 md:px-12 snap-start"
                 >
                     <Contact />
                 </motion.section>
