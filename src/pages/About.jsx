@@ -1,58 +1,70 @@
-import React from 'react'
-import eat from '../assets/eat.jpg'
-import music from '../assets/music.jpg'
-import dulich from '../assets/dulich.jpg'
-import { User } from 'lucide-react';
-import { Calendar } from 'lucide-react';
-import { MapPin } from 'lucide-react';
-import { Mail } from 'lucide-react';
+import React from 'react';
+import eat from '../assets/eat.jpg';
+import music from '../assets/music.jpg';
+import dulich from '../assets/dulich.jpg';
+import { User, Calendar, MapPin, Mail } from 'lucide-react';
 
 function About() {
     return (
-        <div>
-            <div className="max-w-7xl mx-auto p-10 border-0.5 border-base-300 rounded-lg shadow-lg mt-10 mb-5">
-                <h2 className="text-2xl">Personal Infomation</h2>
-                <ul className="text-xl ml-5 ">
-                    <li className='flex gap-2'><User />Full Name : Vo Thi Ngoc Nhan</li>
-                    <li className='flex gap-2'><Calendar />Date of Birth: 02/08/2005</li>
-                    <li className='flex gap-2' ><MapPin />Address: Thu Duc City</li>
-
-                    <li className='flex gap-2'> <Mail />Email: ngocnhan282005@gmail.com</li>
+        <div className="px-4">
+            {/* Thông tin cá nhân */}
+            <div className="max-w-7xl mx-auto p-6 border border-base-300 rounded-2xl shadow-lg mt-10 mb-6">
+                <h2 className="text-2xl font-semibold mb-3">Personal Information</h2>
+                <ul className="text-lg space-y-2">
+                    <li className="flex items-center gap-2"><User /> Full Name: Vo Thi Ngoc Nhan</li>
+                    <li className="flex items-center gap-2"><Calendar /> Date of Birth: 02/08/2005</li>
+                    <li className="flex items-center gap-2"><MapPin /> Address: Thu Duc City</li>
+                    <li className="flex items-center gap-2"><Mail /> Email: ngocnhan282005@gmail.com</li>
                 </ul>
-
-
-
             </div>
-            <div className="max-w-7xl mx-auto p-10 border-0.5 border-base-300 rounded-lg shadow-lg mt-10 mb-5">
-                <h2 className="text-2xl">Career Objective</h2>
-                <p className="text-lg ml-5 ">To become a professional Front–End developer, able to design and
-                    build user-friendly, modern and creative interfaces.</p>
+
+            {/* Mục tiêu nghề nghiệp */}
+            <div className="max-w-7xl mx-auto p-6 border border-base-300 rounded-2xl shadow-lg mb-6">
+                <h2 className="text-2xl font-semibold mb-3">Career Objective</h2>
+                <p className="text-lg">
+                    To become a professional Front–End developer, able to design and build user-friendly,
+                    modern and creative interfaces.
+                </p>
             </div>
-            <div className="max-w-7xl  flex grid-cols-2 mx-auto py-12 border-0.5 border-base-300   mb-10 ">
-                <div className='flex-1 border-0.5 border-base-300 rounded-lg shadow-lg text-center'>
-                    <h2 className='text-2xl mb-2 '>My Hobby</h2>
-                    <div className='flex space-x-5 flex-wrap justify-center items-center p-5'>
-                        <img className='w-30 h-30' src={eat} alt="" />
-                        <img className='w-30 h-30' src={music} alt="" />
-                        <img className='w-30 h-30' src={dulich} alt="" />
+
+            {/* Sở thích & Kỹ năng */}
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                {/* Hobby */}
+                <div className="border border-base-300 rounded-2xl shadow-lg text-center p-6">
+                    <h2 className="text-2xl font-semibold mb-4">My Hobby</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 place-items-center">
+                        <img
+                            src={eat}
+                            alt="Eating"
+                            className="w-40 h-40 object-cover rounded-xl shadow-md"
+                        />
+                        <img
+                            src={music}
+                            alt="Music"
+                            className="w-40 h-40 object-cover rounded-xl shadow-md"
+                        />
+                        <img
+                            src={dulich}
+                            alt="Traveling"
+                            className="w-40 h-40 object-cover rounded-xl shadow-md"
+                        />
                     </div>
-
-
                 </div>
-                <div className=' flex-1 ml-10 border-0.5 border-base-300 rounded-lg shadow-lg p-5 items-center'>
-                    <h2 className='text-2xl text-center'>Skills</h2>
-                    <ul className='list-disc text-lg ml-5 justify-center items-center px-20'>
-                        <li>HTML </li>
+
+                {/* Skills */}
+                <div className="border border-base-300 rounded-2xl shadow-lg p-6">
+                    <h2 className="text-2xl font-semibold text-center mb-4">Skills</h2>
+                    <ul className="list-disc text-lg space-y-2 ml-8">
+                        <li>HTML</li>
                         <li>CSS</li>
-                        <li>Javascript</li>
+                        <li>JavaScript</li>
                         <li>ReactJS</li>
                         <li>Tailwind CSS</li>
                     </ul>
                 </div>
-
             </div>
         </div>
-    )
+    );
 }
 
-export default About
+export default About;
