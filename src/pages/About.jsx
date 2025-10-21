@@ -22,8 +22,10 @@ function About() {
             <div className="max-w-7xl mx-auto p-6 border border-base-300 rounded-2xl shadow-lg mb-6">
                 <h2 className="text-2xl font-semibold mb-3">Career Objective</h2>
                 <p className="text-lg">
-                    To become a professional Front–End developer, able to design and build user-friendly,
-                    modern and creative interfaces.
+                    To become a professional Front-End Developer, capable of designing and building modern, creative, and user-friendly interfaces.
+                    I aim to continuously improve my skills in web technologies,
+                    contribute to creating high-quality and visually appealing websites, and collaborate effectively within a
+                    dynamic development team to deliver innovative digital experiences.
                 </p>
             </div>
 
@@ -32,24 +34,31 @@ function About() {
                 {/* Hobby */}
                 <div className="border border-base-300 rounded-2xl shadow-lg text-center p-6">
                     <h2 className="text-2xl font-semibold mb-4">My Hobby</h2>
+                    <p className="text-base sm:text-lg text-center mb-6 px-2 sm:px-8 leading-relaxed">
+                        I enjoy exploring new cuisines, listening to music, and traveling to discover
+                        different cultures and beautiful places. My curiosity also inspires me to keep
+                        learning and exploring new things every day.
+                    </p>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 place-items-center">
                         <img
                             src={eat}
                             alt="Eating"
-                            className="w-40 h-40 object-cover rounded-xl shadow-md"
+                            className="w-36 h-36 sm:w-40 sm:h-40 object-cover rounded-xl shadow-md"
                         />
                         <img
                             src={music}
                             alt="Music"
-                            className="w-40 h-40 object-cover rounded-xl shadow-md"
+                            className="w-36 h-36 sm:w-40 sm:h-40 object-cover rounded-xl shadow-md"
                         />
                         <img
                             src={dulich}
                             alt="Traveling"
-                            className="w-40 h-40 object-cover rounded-xl shadow-md"
+                            className="w-36 h-36 sm:w-40 sm:h-40 object-cover rounded-xl shadow-md"
                         />
                     </div>
                 </div>
+
+
 
                 {/* Skills */}
                 <div className="border border-base-300 rounded-2xl shadow-lg p-6">
