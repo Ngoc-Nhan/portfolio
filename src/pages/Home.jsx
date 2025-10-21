@@ -8,7 +8,7 @@ import { Link } from "react-scroll";
 
 function Home() {
     const [theme, setTheme] = useState("dark");
-    const [menuOpen, setMenuOpen] = useState(false); // 👉 thêm trạng thái menu mobile
+    const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
         document.documentElement.setAttribute("data-theme", theme);
@@ -16,6 +16,7 @@ function Home() {
 
     return (
         <div className="min-h-screen bg-base-100 transition-colors duration-500">
+
             {/* Navbar */}
             <nav className="fixed top-0 left-0 w-full h-24 bg-base-100 shadow-md flex items-center justify-between px-6 z-50">
                 {/* Logo */}
@@ -25,59 +26,28 @@ function Home() {
 
                 {/* Menu desktop */}
                 <div className="hidden md:flex items-center space-x-8 text-lg">
-                    <Link
-                        to="home"
-                        smooth={true}
-                        offset={-100}
-                        duration={600}
-                        className="hover:text-primary cursor-pointer"
-                    >
-                        Home
-                    </Link>
-                    <Link
-                        to="about"
-                        smooth={true}
-                        offset={-100}
-                        duration={600}
-                        className="hover:text-primary cursor-pointer"
-                    >
-                        About
-                    </Link>
-                    <Link
-                        to="projects"
-                        smooth={true}
-                        offset={-100}
-                        duration={600}
-                        className="hover:text-primary cursor-pointer"
-                    >
-                        Projects
-                    </Link>
-                    <Link
-                        to="contact"
-                        smooth={true}
-                        offset={-100}
-                        duration={600}
-                        className="hover:text-primary cursor-pointer"
-                    >
-                        Contact
-                    </Link>
+                    {["home", "about", "projects", "contact"].map((section) => (
+                        <Link
+                            key={section}
+                            to={section}
+                            spy={true}
+                            smooth={true}
+                            offset={-100}
+                            duration={600}
+                            activeClass="text-primary font-semibold"
+                            className="hover:text-primary cursor-pointer transition-colors"
+                        >
+                            {section.charAt(0).toUpperCase() + section.slice(1)}
+                        </Link>
+                    ))}
 
                     {/* Nút chuyển theme */}
-                    {theme === "light" ? (
-                        <button
-                            onClick={() => setTheme("dark")}
-                            className="text-2xl hover:text-primary"
-                        >
-                            🌙
-                        </button>
-                    ) : (
-                        <button
-                            onClick={() => setTheme("light")}
-                            className="text-2xl hover:text-primary"
-                        >
-                            🌞
-                        </button>
-                    )}
+                    <button
+                        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                        className="text-2xl hover:text-primary transition-transform duration-300 transform hover:rotate-180"
+                    >
+                        {theme === "light" ? "🌙" : "🌞"}
+                    </button>
                 </div>
 
                 {/* Nút menu mobile */}
@@ -90,75 +60,44 @@ function Home() {
                     </button>
                 </div>
 
-                {/* Menu mobile thả xuống */}
+                {/* Menu mobile dạng overlay toàn màn hình */}
                 {menuOpen && (
-                    <div className="absolute top-24 left-0 w-full bg-base-100 shadow-lg flex flex-col items-center space-y-5 py-6 text-lg md:hidden">
-                        <Link
-                            to="home"
-                            smooth={true}
-                            offset={-100}
-                            duration={600}
-                            className="hover:text-primary cursor-pointer"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            Home
-                        </Link>
-                        <Link
-                            to="about"
-                            smooth={true}
-                            offset={-100}
-                            duration={600}
-                            className="hover:text-primary cursor-pointer"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            About
-                        </Link>
-                        <Link
-                            to="projects"
-                            smooth={true}
-                            offset={-100}
-                            duration={600}
-                            className="hover:text-primary cursor-pointer"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            Projects
-                        </Link>
-                        <Link
-                            to="contact"
-                            smooth={true}
-                            offset={-100}
-                            duration={600}
-                            className="hover:text-primary cursor-pointer"
-                            onClick={() => setMenuOpen(false)}
-                        >
-                            Contact
-                        </Link>
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 bg-base-100 bg-opacity-95 flex flex-col items-center justify-center space-y-8 text-2xl font-medium md:hidden z-40"
+                    >
+                        {["home", "about", "projects", "contact"].map((section) => (
+                            <Link
+                                key={section}
+                                to={section}
+                                spy={true}
+                                smooth={true}
+                                offset={-80}
+                                duration={600}
+                                activeClass="text-primary font-semibold"
+                                className="hover:text-primary cursor-pointer transition-colors"
+                                onClick={() => setMenuOpen(false)}
+                            >
+                                {section.charAt(0).toUpperCase() + section.slice(1)}
+                            </Link>
+                        ))}
 
-                        {/* Nút theme */}
-                        {theme === "light" ? (
-                            <button
-                                onClick={() => {
-                                    setTheme("dark");
-                                    setMenuOpen(false);
-                                }}
-                                className="text-2xl hover:text-primary"
-                            >
-                                🌙
-                            </button>
-                        ) : (
-                            <button
-                                onClick={() => {
-                                    setTheme("light");
-                                    setMenuOpen(false);
-                                }}
-                                className="text-2xl hover:text-primary"
-                            >
-                                🌞
-                            </button>
-                        )}
-                    </div>
+                        {/* Nút theme trong menu mobile */}
+                        <button
+                            onClick={() => {
+                                setTheme(theme === "light" ? "dark" : "light");
+                                setMenuOpen(false);
+                            }}
+                            className="text-3xl hover:text-primary transition-transform duration-300 transform hover:rotate-180"
+                        >
+                            {theme === "light" ? "🌙" : "🌞"}
+                        </button>
+                    </motion.div>
                 )}
             </nav>
+
 
             {/* Intro Section */}
             <motion.div
